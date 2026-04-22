@@ -76,7 +76,7 @@ import java.util.HashMap;
                             .build());
 
             controller1 = new Controller(gamepad1, 0.0f, "1",
-                    new Controller.Key[] {
+                    new Controller.Key[]{
                             Controller.Key.LEFT_STICK_X,
                             Controller.Key.LEFT_STICK_Y,
                             Controller.Key.RIGHT_STICK_X,
@@ -92,11 +92,11 @@ import java.util.HashMap;
                 LogController.logData();
                 PIDController.update();
 
-                drive.mecanumDrive(0.5 * controller1.analogDeadband(Controller.Key.RIGHT_STICK_X), new Vector(-controller1.analogDeadband(Controller.Key.LEFT_STICK_X), -1 * controller1.analogDeadband(Controller.Key.LEFT_STICK_Y)));
+                drive.mecanumDrive(0.65 * controller1.analogDeadband(Controller.Key.RIGHT_STICK_X), new Vector(0.75 * -controller1.analogDeadband(Controller.Key.LEFT_STICK_X), -0.75 * controller1.analogDeadband(Controller.Key.LEFT_STICK_Y)));
 
-                nonDriveMotors.get("rightHand").setPower(controller1.getButton(Controller.Key.Y) ? -0.2 : controller1.getButton(Controller.Key.A) ? 0.2 : 0.0);
+                nonDriveMotors.get("rightHand").setPower(controller1.getButton(Controller.Key.Y) ? -0.3 : controller1.getButton(Controller.Key.A) ? 0.3 : 0.0);
 
-                nonDriveMotors.get("leftHand").setPower(controller1.getButton(Controller.Key.UP) ? 0.2 : controller1.getButton(Controller.Key.DOWN) ? -0.2 : 0.0);
+                nonDriveMotors.get("leftHand").setPower(controller1.getButton(Controller.Key.UP) ? 0.3 : controller1.getButton(Controller.Key.DOWN) ? -0.3 : 0.0);
 
                 nonDriveMotors.get("turnHead").setPower(0.4 * controller1.getAnalog(Controller.Key.LEFT_TRIGGER));
                 nonDriveMotors.get("turnHead").setPower(-0.4 * controller1.getAnalog(Controller.Key.RIGHT_TRIGGER));
