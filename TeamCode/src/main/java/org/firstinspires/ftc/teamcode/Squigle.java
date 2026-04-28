@@ -92,7 +92,12 @@ import java.util.HashMap;
                 LogController.logData();
                 PIDController.update();
 
-                drive.mecanumDrive(0.65 * controller1.analogDeadband(Controller.Key.RIGHT_STICK_X), new Vector(0.75 * -controller1.analogDeadband(Controller.Key.LEFT_STICK_X), -0.75 * controller1.analogDeadband(Controller.Key.LEFT_STICK_Y)));
+                if (controller1.getButton(Controller.Key.B)) {
+                    drive.mecanumDrive(controller1.analogDeadband(Controller.Key.RIGHT_STICK_X), new Vector(-controller1.analogDeadband(Controller.Key.LEFT_STICK_X), -1 * controller1.analogDeadband(Controller.Key.LEFT_STICK_Y)));
+                }
+                else {
+                    drive.mecanumDrive(0.65 * controller1.analogDeadband(Controller.Key.RIGHT_STICK_X), new Vector(0.75 * -controller1.analogDeadband(Controller.Key.LEFT_STICK_X), -0.75 * controller1.analogDeadband(Controller.Key.LEFT_STICK_Y)));
+                }
 
                 nonDriveMotors.get("rightHand").setPower(controller1.getButton(Controller.Key.Y) ? -0.3 : controller1.getButton(Controller.Key.A) ? 0.3 : 0.0);
 
