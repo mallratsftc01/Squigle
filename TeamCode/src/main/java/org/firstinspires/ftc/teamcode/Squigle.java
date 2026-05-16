@@ -92,7 +92,7 @@ import java.util.HashMap;
                 LogController.logData();
                 PIDController.update();
 
-                if (controller1.getButton(Controller.Key.B)) {
+                if (controller1.getButton(Controller.Key.X)) {
                     drive.mecanumDrive(controller1.analogDeadband(Controller.Key.RIGHT_STICK_X), new Vector(-controller1.analogDeadband(Controller.Key.LEFT_STICK_X), -1 * controller1.analogDeadband(Controller.Key.LEFT_STICK_Y)));
                 }
                 else {
